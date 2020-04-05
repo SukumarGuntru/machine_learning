@@ -57,9 +57,40 @@ microchips, from which you can build a logistic regression model.We will use ano
 2.1 Visualizing the data
 Similar to the previous parts of this exercise, plotData is used to generate a ﬁgure like Figure 3, where the axes are the two test 
 scores, and the positive (y = 1, accepted) and negative (y = 0, rejected) examples are shown with diﬀerent markers.
-Figure '' shows that our dataset cannot be separated into positive and negative examples by a straight-line through the plot. 
-Therefore, a straightforward application of logistic regression will not perform well on this dataset since logistic regression will 
-only be able to ﬁnd a linear decision boundary.
+Figure 'Input-Features-Regularized' shows that our dataset cannot be separated into positive and negative examples by a straight-line
+through the plot. Therefore, a straightforward application of logistic regression will not perform well on this dataset since logistic 
+regression will only be able to ﬁnd a linear decision boundary.
+2.2 Feature mapping
+One way to ﬁt the data better is to create more features from each data point. In the provided function mapFeature.m, we will map the 
+features into all polynomial terms of x1 and x2 up to the sixth power.
+mapFeature(x) =[1 x1 x2 x1^2  x1x2 x2^2 x3x11 . . . x1x5^2 x6^2]
+As a result of this mapping, our vector of two features (the scores on two QA tests) has been transformed into a 28-dimensional vector.
+A logistic regression classiﬁer trained on this higher-dimension feature vector will have a more complex decision boundary and will 
+appear nonlinear when drawn in our 2-dimensional plot. While the feature mapping allows us to build a more expressive classiﬁer, 
+it also more susceptible to overﬁtting.
+
+2.3 Cost function and gradient
+Now we will implement code to compute the cost function and gradient for regularized logistic regression.The code in costFunctionReg.m
+will return the cost and gradient.The regularized cost function in logistic regression is
+J(θ) =1/ m*(sigma i=1 to m)[−y(i)*log(hθ(x(i)))−(1−y(i))*log(1−hθ(x(i)))]+ λ /2m *(sigma j=1 to n)[θj^2].
+Note that here we should not regularize the parameter θ0. In Octave/MATLAB,indexing starts from 1, hence, we should not be regularizing 
+the theta(1) parameter (which corresponds to θ0) in the code. The gradient of the cost function is a vector where the jth element is
+deﬁned as follows:
+∂J(θ)/∂θ0 =1/ m*(sigma i=1 to m)[(hθ(x(i))−y(i))x(i)j] for j = 0
+∂J(θ)/∂θj = 1/m* (sigma i=1 to m)[(hθ(x(i))−y(i))x(i)j] + λ/m[θj] for j ≥ 1
+Once we are done, ex2 reg.m will call our costFunctionReg function using the initial value of θ (initialized to all zeros). We should 
+see that the cost is about 0.693.
+
+2.3.1 Learning parameters using fminunc
+Similar to the previous parts, we will use fminunc to learn the optimal parameters θ. If we have completed the cost and gradient for
+regularized logistic regression (costFunctionReg.m) correctly, we should be able to step through the next part of ex2 reg.m to learn the
+parameters θ using fminunc.
+2.4 Plotting the decision boundary
+We have the function plotDecisionBoundary.m which plots the (non-linear) decision boundary that separates the positive and negative 
+examples. In plotDecisionBoundary.m, we plot the non-linear decision boundary by computing the classiﬁer’s predictions on an evenly 
+spaced grid and then and drew a contour plot of where the predictions change from y = 0 to y = 1. After learning the parameters θ, 
+the next step in ex_reg.m will plot a decision boundary similar to .
+10
 
 
 
