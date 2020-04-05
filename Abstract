@@ -1,0 +1,14 @@
+---Logistic Regression---
+  I implemented logistic regression and applied it to two diﬀerent datasets
+  logistic regression model to predict whether a student gets admitted into a university
+  Suppose that I am the administrator of a university department and I want to determine 
+  each applicant’s chance of admission based on their results on two exams. I have historical
+  data from previous applicants that I can use as a training set for logistic regression. 
+  For each training example, I have the applicant’s scores on two exams and the admissions decision. 
+  Our task is to build a classiﬁcation model that estimates an applicant’s probability of admission based 
+  the scores from those two exams.
+  1.1 Visualizing the data
+Before starting to implement any learning algorithm, it is always good to visualize the data if possible. 
+In the ﬁrst part of ex2.m, the code will load the data and display it on a 2-dimensional plot by calling the function plotData.
+we will now complete the code in plotData so that it displays a ﬁgure like , where the axes are the two exam scores, and the positive and negative examples are shown with diﬀerent markers.
+
