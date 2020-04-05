@@ -89,8 +89,8 @@ parameters θ using fminunc.
 We have the function plotDecisionBoundary.m which plots the (non-linear) decision boundary that separates the positive and negative 
 examples. In plotDecisionBoundary.m, we plot the non-linear decision boundary by computing the classiﬁer’s predictions on an evenly 
 spaced grid and then and drew a contour plot of where the predictions change from y = 0 to y = 1. After learning the parameters θ, 
-the next step in ex_reg.m will plot a decision boundary similar to .
-10
+the next step in ex_reg.m will plot a decision boundary similar to 'Regularized-Hupothesis.' .
+
 
 
 
