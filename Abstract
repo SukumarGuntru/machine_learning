@@ -1,10 +1,11 @@
 ---1 Logistic Regression---
-I implemented logistic regression and applied it to two diﬀerent datasets .Logistic regression model to predict whether a student gets
-admitted into a university.
+I implemented logistic regression and applied it to two diﬀerent datasets .Logistic regression model to predict whether "a student gets
+admitted into a university".
 Suppose that we are  the administrators of a university department and we want to determine each applicant’s chance of admission based
 on their results on two exams. We have historical data from previous applicants that we can use as a training set for logistic regression. 
 For each training example, we have the applicant’s scores on two exams and the admissions decision. Our task is to build a classiﬁcation
 model that estimates an applicant’s probability of admission based the scores from those two exams.
+
  1.1 Visualizing the data
 Before starting to implement any learning algorithm, it is always good to visualize the data if possible. In the ﬁrst part of ex2.m, 
 the code will load the data and display it on a 2-dimensional plot by calling the function plotData.we will now complete the code in 
@@ -48,18 +49,21 @@ of the cost and θ. Notice that by using fminunc, we did not have to write any l
 gradient descent. This is all done by fminunc: we only needed to provide a function calculating the cost and the gradient. Once fminunc 
 completes, ex2.m will call our costFunction function using the optimal parameters of θ. we should see that the cost is about 0.203. 
 This ﬁnal θ value will then be used to plot the decision boundary on the training data,resulting in a ﬁgure similar to 'Decision Boundary'. 
+
 ---2 Regularized logistic regression---
-We will implement regularized logistic regression to predict whether microchips from a fabrication plant passes quality assurance (QA).
+We will implement regularized logistic regression to "predict whether microchips from a fabrication plant passes quality assurance (QA)".
 During QA, each microchip goes through various tests to ensure it is functioning correctly. Suppose we are product managers of the 
 factory and we have the test results for some microchips on two diﬀerent tests. From these two tests, you would like to determine 
 whether the microchips should be accepted or rejected. To help you make the decision, you have a dataset of test results on past 
 microchips, from which you can build a logistic regression model.We will use another script, ex2_reg.m to complete this portion.
+
 2.1 Visualizing the data
 Similar to the previous parts of this exercise, plotData is used to generate a ﬁgure like Figure 3, where the axes are the two test 
 scores, and the positive (y = 1, accepted) and negative (y = 0, rejected) examples are shown with diﬀerent markers.
 Figure 'Input-Features-Regularized' shows that our dataset cannot be separated into positive and negative examples by a straight-line
 through the plot. Therefore, a straightforward application of logistic regression will not perform well on this dataset since logistic 
 regression will only be able to ﬁnd a linear decision boundary.
+
 2.2 Feature mapping
 One way to ﬁt the data better is to create more features from each data point. In the provided function mapFeature.m, we will map the 
 features into all polynomial terms of x1 and x2 up to the sixth power.
@@ -85,6 +89,7 @@ see that the cost is about 0.693.
 Similar to the previous parts, we will use fminunc to learn the optimal parameters θ. If we have completed the cost and gradient for
 regularized logistic regression (costFunctionReg.m) correctly, we should be able to step through the next part of ex2 reg.m to learn the
 parameters θ using fminunc.
+
 2.4 Plotting the decision boundary
 We have the function plotDecisionBoundary.m which plots the (non-linear) decision boundary that separates the positive and negative 
 examples. In plotDecisionBoundary.m, we plot the non-linear decision boundary by computing the classiﬁer’s predictions on an evenly 
